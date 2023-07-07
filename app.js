@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express')
 const app = express();
 const bodyParser = require('body-parser')
@@ -12,12 +13,13 @@ const MONGODB_URI = 'mongodb+srv://Utkarsharma:Utkarsh%40123@newcluster.qjhysui.
 const csrf = require('csurf');
 const flash = require('connect-flash');
 const multer = require('multer');
+const port = process.env.PORT || 3000;
 
 const isAuth = require('./middleware/is-auth')
 const shopController = require('./controllers/shop')
 
 const store = new MongoDBStore({      // here we are creating the store in mongodb where we would be storing the sessions for different requests.
-    uri : MONGODB_URI,
+    uri : process.env.MONGO_URL,
     collection : 'sessions'
 })
 
@@ -123,10 +125,10 @@ app.use((error,req,res,next)=>{        // this is a special middleware which is 
   res.redirect('/500');
 })
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(process.env.MONGO_URL)
         .then(result =>{
             console.log('Connected to the Server!');  
-            app.listen(3000);
+            app.listen(port);
         })
         .catch(err =>{
             console.log(err);
