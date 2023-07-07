@@ -1,0 +1,36 @@
+<!-- isme hum woh code likhenge jo ki sab ejs files me jaayega aur navigation bar ki jagah use hoga me use hoga. -->
+
+<header class="main-header">
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+            <li class="main-header__item"><a href="/" class="<%= path === '/' ? 'active' : '' %> " >Shop</a></li>
+            <li class="main-header__item"><a href="/products" class="<%= path=== '/products' ? 'active' : '' %> ">Products</a></li>
+
+            <% if (isAuthenticated) { %>
+            <li class="main-header__item"><a href="/cart" class="<%= path=== '/cart' ? 'active' : '' %> ">Cart</a></li>
+            <li class="main-header__item"><a href="/orders" class="<%= path=== '/orders' ? 'active' : '' %> ">Orders</a></li>
+            <li class="main-header__item"><a href="/admin/add-product" class="<%= path=== '/admin/add-product' ? 'active' : '' %> ">Add Product</a></li>
+            <li class="main-header__item"><a href="/admin/products" class="<%= path=== '/admin/products' ? 'active' : '' %> ">Admin Products</a></li>
+            <% } %>
+        </ul>
+
+        <% if (!isAuthenticated) { %>
+        <ul class="main-header__item-list">
+            <li class="main-header__item">
+                <a href="/login" class="<%= path=== '/login' ? 'active' : '' %> ">Login</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
+            </li>
+            <% } else { %>
+            <li>
+                <form action="/logout" method="POST">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+        
+    </nav>
+</header>
