@@ -1,32 +1,41 @@
 <!-- yeh woh waali file h jo user ko website start hote hi dikhegi isko hum shop.js ke routes me daal denge kyoki wahi se rendering ho rhi h-->
 <%- include('../includes/head.ejs')%>
-    <link rel="stylesheet" href="/css/add-product.css">
-    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/auth.css">
 </head>
 <body>
 
     <%-include('../includes/navigation_bar.ejs')%>
 
-    <main>
+    <main class="loginPage">
         <% if(errorMessage) { %>
         <div class="user-message user-message--error"><%= errorMessage %></div>
         <% }%> 
-
-       <form class="login-form" action="/login" method="POST" novalidate>
-            <div class="form-control">
-                <label for="email">E-Mail</label>
-                <input type="email" name="email" id="email" value="<%=oldInputLogin.email%>">
+            
+        <div class="loginForm">
+            <div class="formData">
+                <form action="/login" method="POST" novalidate>
+                    <div class="form-control">
+                        <label for="email">E-Mail</label>
+                        <input type="email" name="email" id="email" value="<%=oldInputLogin.email%>">
+                    </div>
+                    <div class="form-control">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" value="<%=oldInputLogin.password%>">
+                    </div>
+                    <div class="loginButtonDiv">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button type="submit" class="loginButton">Login</button>
+                    </div>
+                    
+               </form>
             </div>
-            <div class="form-control">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" value="<%=oldInputLogin.password%>">
-            </div>
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <button type="submit">Login</button>
-       </form>
-       <div class="centered">
-        <a href="/reset">Reset Password</a>
-       </div>
+        
+           <div class="centered">
+            <a href="/reset" class="resetPassword">Reset Password</a>
+           </div>
+        </div>
+       
+       
     </main>
 </body>
 </html>

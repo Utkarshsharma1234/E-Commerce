@@ -43,39 +43,3 @@ main {
     color: #6200ff;
 }
 
-.product-form{
-    width: 20rem;
-    max-width: 90%;
-    margin: auto;
-}
-.form-control{
-    margin: 1rem 0;;
-}
-
-.form-control label,
-.form-control input{
-    display: block;
-    width: 100%;
-}
-
-.form-control input{
-    border: 3px solid rgb(96, 41, 2);
-    font: inherit;
-    border-radius: 2px;
-}
-
-button{
-    font: inherit;
-    border: 3px solid rgb(21, 1, 122);
-    border-radius: 3px;
-    background-color: rgb(142, 102, 102);
-    color: black;
-    cursor: pointer;
-
-}
-
-button:hover,
-button:active{
-    background-color: blue;
-    color: white;
-}
