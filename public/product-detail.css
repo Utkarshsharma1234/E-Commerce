@@ -1,3 +1,23 @@
 .centered{
     text-align: center;
 }
+
+.card__image_detail{
+    height: 225px;
+    width: 300px;
+    object-fit: fill;
+
+}
+
+.detailCartButton{
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    background-color: aqua;
+    border: none;
+}
+
+.detailCartButton:hover{
+    background-color: bisque;
+    border: 2px solid red;
+}
