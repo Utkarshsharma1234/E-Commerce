@@ -11,12 +11,12 @@
         <% if(prods.length > 0) { %>
             <div class="grid ">
                 <% for(let product of prods) { %>
-                <article class="card product-item" style="border : 2px solid red">
+                <div class="card__product-item">
                     <header class="card__header">
                         <h1 class="product__title"><%=product.title%></h1>
                     </header>
-                    <div class="card__image">
-                        <img src="/<%= product.imageUrl %>" alt="The Book" height="200px">
+                    <div class="card__image_div">
+                        <img src="/<%= product.imageUrl %>" class="card__image" alt="The Book" height="200px">
                     </div>
                     <div class="card__content">
                         <h2 class="product__price"><%= product.price%></h2>
@@ -26,7 +26,7 @@
                         <a href="/products/<%= product._id %>" class="btn" >Details</a>
                         <%- include('../includes/add-to-cart.ejs',{product : product}) %>
                     </div>
-                </article>
+                </div>
                 <% } %>
             </div>
 

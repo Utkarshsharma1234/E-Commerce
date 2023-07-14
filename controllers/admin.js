@@ -6,7 +6,7 @@ const Product = require('../model/product')
 const mongodb = require('mongodb');
 const ObjectId = mongodb.ObjectId;
 const fileHelper = require('../utils/file');
-const ITEMS_PER_PAGE = 1
+const ITEMS_PER_PAGE = 3
 
 exports.getAddProduct = (req,res,next)=>{
     console.log('product added');
@@ -65,7 +65,7 @@ exports.postAddProduct = (req,res,next)=>{
         })
     }
 
-    const imageUrl = image.path;
+    const imageUrl = "images/" + new Date().toISOString + '-' + image.originalname;
     
     const product = new Product({    // isme right me jo values h woh jo product add ho rha h uski h.
         title : title,     // left waali value jo product schema humne product model me define kiya h woh h.

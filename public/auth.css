@@ -1,8 +1,7 @@
 
 
 .loginPage{
-    /* background-color: aqua; */
-    /* background-image: url("data:image/jpeg;base64,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"); */
+    background-image: url("https://img.freepik.com/premium-vector/network-connection-background-abstract-style_23-2148875738.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -16,15 +15,22 @@
 .loginForm{
     border: 2px solid red;
     display: flex;
+    background-color: rgb(30, 30, 30);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 40%;
-    width: 30%;
+    height: 50%;
+    width: 40%;
+}
+
+.loginLabel{
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 .formData{
-    width: 60%;
+    width: 70%;
 }
 .user-message {
     margin: auto;
@@ -56,9 +62,8 @@
 }
 
 .form-control input{
-    border: 3px solid rgb(96, 41, 2);
     font: inherit;
-    border-radius: 2px;
+    background-color: rgb(167, 166, 166);
 }
 
 .loginButtonDiv{
@@ -68,16 +73,16 @@
 
 .loginButton{
     font: inherit;
-    border: 3px solid rgb(21, 1, 122);
+    font-size: 20px;
+    color: white;
     border-radius: 3px;
-    background-color: rgb(142, 102, 102);
-    color: black;
+    background-color: rgb(215, 36, 36);
     cursor: pointer;
     align-self: center;
     margin-top: 25px;
     margin-bottom: 15px;
-    width: 60%;
-    height: 40px;
+    width: 80%;
+    height: 50px;
 }
 
 
@@ -95,5 +100,5 @@
     text-decoration: none;
     font-size: 20px;
     font-weight: 1000;
-    color: black;
+    color: white;
 }

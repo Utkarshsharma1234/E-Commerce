@@ -25,17 +25,22 @@
     border: 2px solid red;
     margin: 5px;
     width: 25%;
-    height: fit-content;
-    
+    height: 50%;
+    margin-bottom: 60px;
   }
+
+  .card__image_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .card__image {
-    width: 100%;
+    width: 250px;
+    height: 275px;
+    object-fit:fill;
   }
-  
-  .card__image img {
-    width: 100%;
-  }
-  
+
   .card__actions {
     padding: 1rem;
     text-align: center;

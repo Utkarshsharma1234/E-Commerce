@@ -7,7 +7,7 @@ const Order = require('../model/order');
 const fs = require('fs');
 const path = require('path');
 const PDFDocument = require('pdfkit');
-const ITEMS_PER_PAGE = 1;
+const ITEMS_PER_PAGE = 3;
 const stripe = require('stripe')('sk_test_51NA8OqSIdoDtrleWBgllgaXUESWiHnkcrP5RVjwGqiPT3ba3x9awi9ZFICgSm1azQhbS9fUAt5h49WFb1kQsTrGm00Pwx1lQs1')
 // const Cart = require('../model/cart')
 

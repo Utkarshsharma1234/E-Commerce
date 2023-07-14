@@ -61,7 +61,7 @@ app.use(bodyParser.urlencoded({extended : false}));     // helps us to read the 
 app.use(multer({storage : storage, fileFilter : fileFilter}).single('image'));
 app.use(express.static(path.join(__dirname, 'public')))  
 // app.use('/admin',express.static(path.join(__dirname, 'public')))  
-app.use('/E:/Skills/Web%20Development/Backend%20Shop%20Application/images',express.static(path.join(__dirname, 'images')))  
+app.use('/images',express.static(path.join(__dirname, 'images')))  
 app.use(session(
     {                           // here we are initializing the store and setting it up equal to the store in mongodb.
      secret : 'my secret',
@@ -133,37 +133,3 @@ mongoose.connect(`${process.env.MONGO_URL}`)
         .catch(err =>{
             console.log(err);
         })
-
-
-// >>>>>> THE BELOW CODE CONNECTS TO THE DATABASE USING THE MONGODB DRIVER ITSELF BUT WITH THE HELP OF MONGOOSE WE CAN DO IT DIRECTLY.
-// mongoConnect((client)=>{
-//     app.listen(3000,()=>{
-//         console.log('app has been started!');
-//     });
-// })
-
-// app.listen(3000,()=>{                  // isme {const server = http.createServer(app)} yeh waali line covered hoti h aur const http = require('http') yeh waali bhi included hoti h
-//     console.log('port has been started at 3000')
-// })
-
-
-
-// Important Notes :
-
-// 1. path.join(__dirname, './', 'views', '404.html') -->> yeh humare views folder me jaake check krega ki 404.html file h kya aur milte hi render kr degi.
-// 2. /admin lagane se yeh app.use('/admin') waala middleware sirf tab hi render hoga jab url me "/admin" milega otherwise nhi hoga.
-// 3. "app.use(express.static(path.join(__dirname, 'public')))" -->> agar hum kahi pe bhi .css ya .js jaisi files ko access krna chahte h toh express hume public folder me redirect kr dega aur jo bhi file hume chahiye woh de dega.
-// 4. adminData me se 2 cheeze export ho rhi h toh unhe access krne ke liye hum adminData.routes and adminData.products aise krke use krenge.
-// 5. app.set('views','views') se hum log yeh bta rhe h ki humari template r=engine waali files ko kaha pe search krna h. agar humare views folder ka naam utkarsh hota toh hum log jo second waala views likha hua h usko replace krte with views.
-// 6. templating engine set krne se aur uska folder define krne se agar hum res.render() ka use krenge toh express automatically views folder me jaake uss particular file ko dekhega jo ki .ejs se khtm hoti h aur usko render kr dega.
-// 7. res.render() me hum jo bhi file specify krenge toh humne templating engine jisko bhi set kiya hoga express ussi templating engine ki same name waali file ko views me search kregi aur milte hi render kr degi.
-// 8. sequelize.sync() is used to change all the model files into tables basically all those tables which have been created by sequelize.define().
-
-
-// Important Note :   yeh includes folder me aur ejs files me layouts ko set krne ke liye h.
-
-// 1. <%- include('includes/head.ejs') %> isse hum includes folder me jaake udhar se saara header me jo bhi code aayega usko carry kr rhe h aur yaha pe use kr rhe h.
-// 2. The main difference between <%=%> and <%-%> is that equal sign waala hume actual value render krne me help krta h as a plain text aur minus waala jo h woh hume html files ko use krne me help krta h.
-// 3.  <%- include('includes/navigation_bar.ejs') isse hum includes folder me jaake udhar se navigation me jo bhi code likha hua h usko copy krke yaha pe laa rhe h.
-// 4. <%- include('includes/end.ejs') %> isse hum includes folder me end.ejs me jaayenge aur waha ka code copy krke le aayenge.
-// 5. Mongoose allows us to setup the connection to the database directly and we don't need the database file further instead we can directly connect to the database.
