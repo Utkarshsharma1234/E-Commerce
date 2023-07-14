@@ -125,7 +125,7 @@ app.use((error,req,res,next)=>{        // this is a special middleware which is 
   res.redirect('/500');
 })
 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(`${process.env.MONGO_URL}`)
         .then(result =>{
             console.log('Connected to the Server!');  
             app.listen(port);
