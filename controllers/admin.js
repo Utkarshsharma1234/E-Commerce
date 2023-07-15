@@ -16,7 +16,7 @@ exports.getAddProduct = (req,res,next)=>{
         return res.redirect('/login');
     }
     res.render('admin/edit-product',
-        {pageTitle : "Waise Edit product route h but page add product hi h.",
+        {pageTitle : "Add Product",
         path : '/admin/add-product',
         editing :false,
         isAuthenticated : req.session.isLoggedIn,
@@ -126,7 +126,7 @@ exports.getEditProduct = (req,res,next)=>{
             }
             else{
                 res.render('admin/edit-product',
-                {pageTitle : "Edit Product from ejs",
+                {pageTitle : "Edit Product",
                 path : '/admin/edit-product',
                 editing : editMode,
                 product : product,
