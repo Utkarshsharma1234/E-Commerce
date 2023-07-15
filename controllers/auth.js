@@ -6,11 +6,16 @@ const sendGridTransport = require('nodemailer-sendgrid-transport');
 const user = require('../model/user');
 const {validationResult} = require('express-validator')
 
-const transporter = nodemailer.createTransport(sendGridTransport({
-    auth :{
-        api_key : ""
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.ethereal.email',
+    port: 587,
+    auth: {
+        user: 'loren.bahringer8@ethereal.email',
+        pass: 'JTEc9DwEajMB58Nty3'
     }
-}));
+});
+
 exports.getLogin = (req,res,next) =>{
 
     let message = req.flash('error');
@@ -143,15 +148,7 @@ exports.postSignup = (req,res,next)=>{
             validationErrors : errors.array()
         })
     }
-    // User.findOne({      // checking if the user with same email exists or not
-    //     email : email          // right side is the email which the user enters and left side is the method value for checking the email.
-    // })
-    // .then(userDoc =>{ 
-    //     if(userDoc){        // if exists then we just simply give an error message and again ask to signup
-    //         req.flash('error', 'E-mail already exists. Try with different account.')
-    //         return res.redirect('/signup');
-    //     }
-    // })
+    
          bcrypt.hash(password, 12)    // pehla arguement woh h jo value hum encrypt krna chahte h aur doosra woh h ki hum kitni values tk usko encrypt krna chahte h.
             .then(hashedPassword =>{
                 const user = new User({     // if not exists we will create a new user and will save it in the user model.
@@ -224,15 +221,18 @@ exports.postReset = (req,res,next) =>{
                 req.flash('mailSent', 'A mail is sent to your registered email address.');
                 res.redirect('/');
                 transporter.sendMail({
-                    to : req.body.email,
-                    from : 'shop@node-complete.com',
-                    subject : 'Reset Password',
+                    from: '"Utkarsh Sharma 👻" <loren.bahringer8@ethereal.email>',
+                    to: `${req.body.email}`, 
+                    subject: "Reset Password", 
                     html : `
-                        <p> Password reset requested </p>
-                        <p> Click this <a href = "https://localhost:3000/reset/${token}"> Link</a>to reset your password. </p>    
-                    `
-                })
+                    <p> Password reset requested </p>
+                    <p> Click this <a href = "https://shopandsell.onrender.com/reset/${token}"> Link</a>to reset your password. </p>    
+                `
+                  })
+
             })
+
+           
             .catch(err => {
                 const error = new Error(err);
                 error.httpStatusCode = 500;

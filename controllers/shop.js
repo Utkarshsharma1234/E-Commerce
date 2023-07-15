@@ -206,7 +206,6 @@ exports.getCheckout = (req,res,next) =>{
 
 exports.postOrder =(req,res,next) =>{
 
-  const token = req.body.stripeToken;
   let cost = 0;
   let totalSum = 0;
   req.user
@@ -215,12 +214,6 @@ exports.postOrder =(req,res,next) =>{
       
       user.cart.items.forEach(p =>{
         totalSum += p.quantity * p.productId.price;
-      })
-      const charge = stripe.charges.create({
-        amount : totalSum * 100,
-        currency : 'usd',
-        description : 'Example Charge object',
-        source : token
       })
       const products = user.cart.items.map(i =>{
         const quantity = i.quantity;
@@ -242,13 +235,6 @@ exports.postOrder =(req,res,next) =>{
      return order.save();
     })
     .then(result =>{
-      const charge = stripe.charges.create({
-        amount : totalSum * 100,
-        currency : 'usd',
-        description : 'Example Charge object',
-        source : token,
-        metadata : {order_id : result._id.toString()}
-      })
      return req.user.clearCart();
     })
     .then(()=>{
